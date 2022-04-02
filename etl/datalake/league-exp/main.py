@@ -33,3 +33,5 @@ def run(request):
     file_name = _date_to_str(date)
 
     df.to_parquet(df.to_parquet(f'gs://datalake-katsu/league-exp/{file_name}'))
+    return 'Ok'
+    
