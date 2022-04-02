@@ -1,10 +1,11 @@
-from datetime import date, datetime, timedelta
+import os
+from datetime import datetime, timedelta
 
 import juno
 import pandas as pd
 from juno.constants import *
 
-from etl.constants import RIOT_TOKEN
+RIOT_TOKEN = os.environ['RIOT_TOKEN']
 
 
 def _utc_to_br():
