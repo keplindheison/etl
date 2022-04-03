@@ -1,4 +1,4 @@
-pandas==1.4.1
+pandas
 git+https://github.com/eduardoKatsurayama/juno.git
 pyarrow==7.0.0
 fsspec==2022.02.0
