@@ -26,7 +26,7 @@ def run():
 
         file_name = date.today()
         folder = key.lower()
-        df.to_parquet(df.to_parquet(f'gs://datalake-katsu/league-exp/{folder}/{file_name}'))
+        df.to_parquet(df.to_parquet(f'gs://datalake-katsu/league-exp/{folder}/{file_name}.parquet'))
     return 'Ok'
 
     
