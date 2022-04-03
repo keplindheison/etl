@@ -1,3 +1,4 @@
+from asyncio import constants
 import os
 from datetime import datetime, timedelta
 
@@ -23,15 +24,19 @@ def run(request):
     tier = TIER[0]
     division = DIVISION[0]
 
-    league = juno.LeagueExp()
-    document = league.get_entries_by_queue_tier_division(queue, tier, division)
+    for key in PLATFORM.keys():
+        league = juno.LeagueExp(key)
+        document = league.get_entries_by_queue_tier_division(queue, tier, division)
 
-    df = pd.DataFrame(document)
-    df = pd.DataFrame(document['content'])
+        df = pd.DataFrame(document)
+        df = pd.DataFrame(document['content'])
 
-    date = _utc_to_br()
-    file_name = _date_to_str(date)
-
-    df.to_parquet(df.to_parquet(f'gs://datalake-katsu/league-exp/{file_name}'))
-    return 'Ok'
+        date = _utc_to_br()
+        file_name = _date_to_str(date)
+        folder = key.lower()
     
+        df.to_parquet(df.to_parquet(f'gs://datalake-katsu/league-exp/{folder}/{file_name}'))
+    return 'Ok'
+
+    
+print(run(''))
