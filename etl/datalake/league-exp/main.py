@@ -1,4 +1,3 @@
-from asyncio import constants
 import os
 from datetime import date 
 
@@ -11,7 +10,7 @@ from juno.constants import *
 RIOT_TOKEN = os.environ['RIOT_TOKEN']
 
 
-def run(request):
+def run():
     juno.authenticate(RIOT_TOKEN)
 
     queue = QUEUE[0]
@@ -31,4 +30,4 @@ def run(request):
     return 'Ok'
 
     
-print(run(''))
+print(run())

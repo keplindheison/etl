@@ -8,6 +8,7 @@ if [ ! -d "./venv" ]; then
 fi
 
 source ./venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt --upgrade
 
 python -m main
